@@ -6,21 +6,21 @@ class App extends Component {
 	constructor(props) {
 		super(props) 
 		
-		this.state = { intervalDelay: 2}
+		this.state = { sliderValue: 2}
 		this._sliderValue = this._sliderValue.bind(this);
 	}
 
 	render() {
 		return (
 			<div className="App">
-				<Slider defaultValue={this.state.intervalDelay} sliderValue={this._sliderValue} intervalDelay={this.state.intervalDelay}/>
-				<TextField intervalDelay={this.state.intervalDelay}/>
+				<Slider defaultValue={this.state.sliderValue} sliderValue={this._sliderValue} intervalDelay={this.state.sliderValue}/>
+				<TextField intervalDelay={this.state.sliderValue}/>
 			</div>
 		);
 	}
 
 	_sliderValue(value) {
-		this.setState({ intervalDelay: value })
+		this.setState({ sliderValue: value })
 	}
 }
 
