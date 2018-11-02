@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TextField from './components/TextField';
+import Slider from './components/Slider';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	constructor(props) {
+		super(props) 
+		
+		this.state = { intervalDelay: 2}
+		this._sliderValue = this._sliderValue.bind(this);
+	}
+
+	render() {
+		return (
+			<div className="App">
+				<Slider defaultValue={this.state.intervalDelay} sliderValue={this._sliderValue} intervalDelay={this.state.intervalDelay}/>
+				<TextField intervalDelay={this.state.intervalDelay}/>
+			</div>
+		);
+	}
+
+	_sliderValue(value) {
+		this.setState({ intervalDelay: value })
+	}
 }
 
 export default App;
+	
