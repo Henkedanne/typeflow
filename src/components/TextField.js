@@ -4,6 +4,8 @@ class TextField extends Component {
 	constructor(props) {
 		super(props)
 		this._handleChange = this._handleChange.bind(this);
+		this._handleSave = this._handleSave.bind(this);
+		this._keyPressSave = this._keyPressSave.bind(this);
 		
 		this.state = {
 			textValue: '',
@@ -13,8 +15,13 @@ class TextField extends Component {
 		}
 	}
 
+	componentDidMount() {
+		document.addEventListener('keydown', (event) => this._keyPressSave(event), false);
+	}
+
 	componentWillUnmount() {
 		clearInterval(this.intervalID);
+		document.clearEventListener('keydown', (event) => this._keyPressSave(event), false);
 	}
 
 	render() {
@@ -24,6 +31,8 @@ class TextField extends Component {
 				<div>
 					<textarea value={this.state.textValue} onChange={this._handleChange} type="text"/>
 				</div>
+				<button onClick={() => this._handleSave()}>Save</button>
+				<p>or </p>
 			</div>
 		);
 	}
@@ -59,6 +68,19 @@ class TextField extends Component {
 			timerIsActive: false
 		});
 		clearInterval(this.intervalID);
+	}
+
+	_handleSave() {
+		this.props.saveText(this.state.textValue)
+	}
+
+	_keyPressSave(event) {
+		console.log(event)
+		if(event.keyCode === 83 && event.metaKey) {
+			event.preventDefault();
+			console.log('Saving...')
+			this._handleSave();
+		}
 	}
 }
 
