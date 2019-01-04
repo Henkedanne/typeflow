@@ -27,7 +27,7 @@ class App extends Component {
 
 		return (
 			<div className="App">
-				<h1>TYPEFLOW</h1>
+				<h1>FLOWTYPE</h1>
 				<Slider defaultValue={sliderValue} sliderValue={this._sliderValue} intervalDelay={sliderValue}/>
 				<TextField intervalDelay={sliderValue} saveText={this._saveText}/>
 				<SaveField value={text}/>
