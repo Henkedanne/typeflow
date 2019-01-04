@@ -32,7 +32,7 @@ class TextField extends Component {
 					<textarea value={this.state.textValue} onChange={this._handleChange} type="text"/>
 				</div>
 				<button onClick={() => this._handleSave()}>Save</button>
-				<p>or </p>
+				<p>or cmd + s </p>
 			</div>
 		);
 	}
